@@ -1,12 +1,12 @@
-const request = require('native-request'); 
+const request = require('request');
+const fs = require('fs');
 
+request.get('http://www.google.com', function (err, response, body) {
+    if (err) {
+        console.log(err);
+        return;
+    }
 
-
-request.get('http://www.google.com', function(err, data, status, headers) { 
-    if (err) { 
-    console.log(err); 
-    } 
-
-
-    
-}); 
+    fs.writeFileSync('pagina.html', body);
+    console.log('Ficheiro pagina.html criado!');
+});
